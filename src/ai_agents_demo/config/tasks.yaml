@@ -1,15 +1,20 @@
-research_task:
+analyze_code_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is 2024.
+    Analyze the code in the specified GitHub repository to identify potential issues and areas for improvement.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
+    A detailed report highlighting the identified issues and suggested improvements.
+  agent: code_analyzer
 
-reporting_task:
+improve_code_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Make improvements to the code in the specified GitHub repository based on the analysis report.
   expected_output: >
-    A fully fledge reports with the mains topics, each with a full section of information.
-    Formatted as markdown without '```'
+    Improved code committed to the GitHub repository.
+  agent: code_improver
+
+respond_query_task:
+  description: >
+    Answer questions about the codebase and provide detailed explanations.
+  expected_output: >
+    Detailed answers and insights about the codebase.
+  agent: query_responder

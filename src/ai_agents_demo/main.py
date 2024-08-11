@@ -1,41 +1,7 @@
-#!/usr/bin/env python
-import sys
-from ai_agents_demo.crew import AiAgentsDemoCrew
+from .crew import GithubInteractorCrew
 
-# This main file is intended to be a way for your to run your
-# crew locally, so refrain from adding necessary logic into this file.
-# Replace with inputs you want to test with, it will automatically
-# interpolate any tasks and agents information
-
-def run():
-    """
-    Run the crew.
-    """
-    inputs = {
-        'topic': 'AI LLMs'
-    }
-    AiAgentsDemoCrew().crew().kickoff(inputs=inputs)
-
-
-def train():
-    """
-    Train the crew for a given number of iterations.
-    """
-    inputs = {
-        "topic": "AI LLMs"
-    }
-    try:
-        AiAgentsDemoCrew().crew().train(n_iterations=int(sys.argv[1]), inputs=inputs)
-
-    except Exception as e:
-        raise Exception(f"An error occurred while training the crew: {e}")
-
-def replay():
-    """
-    Replay the crew execution from a specific task.
-    """
-    try:
-        AiAgentsDemoCrew().crew().replay(task_id=sys.argv[1])
-
-    except Exception as e:
-        raise Exception(f"An error occurred while replaying the crew: {e}")
+if __name__ == "__main__":
+    crew_instance = GithubInteractorCrew()
+    repo_url = 'https://github.com/LishuaiJing3/data-science-project-template.git'
+    result = crew_instance.crew().kickoff(inputs={'repo_url': repo_url})
+    print(result)
